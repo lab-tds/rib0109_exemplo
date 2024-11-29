@@ -42,3 +42,7 @@ top_de <- top_de[order(abs(top_de$log2FoldChange), decreasing = TRUE),]
 head(top_de)
 
 saveRDS(top_de, file = 'data/results/DE_TP53_mut_vs_wt.rds')
+
+png('data/results/TP53.png')
+boxplot(log(assay(dds)['ENSG00000111049.4', ]+1) ~ maf$TP53, ylab = 'log(MYF5)', xlab = 'TP53 mut')
+dev.off()
